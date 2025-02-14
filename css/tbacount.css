@@ -1,0 +1,137 @@
+/* Define CSS variables for easy color and size management */
+:root {
+    --primary-color: #ff833e; /* Main primary color */
+    --primary-color-dark: #db6f35; /* Darker shade of primary color */
+    --text-dark: #333333; /* Dark text color */
+    --text-light: #767268; /* Light text color */
+    --white: #ffffff; /* White color */
+    --max-width: 1200px; /* Maximum width for layout */
+    --header-font: "Bebas Neue", sans-serif; /* Font for headers */
+}
+
+/* Body styling */
+body {
+    background: var(--white); /* Set background color to white */
+    width: 100%; /* Full width of the viewport */
+    height: 100vh; /* Full height of the viewport */
+    font-family: sans-serif; /* Default font family */
+}
+
+/* Main heading styling */
+h1 {
+    font-size: 30px; /* Font size for heading */
+    color: var(--primary-color); /* Color for heading */
+    text-align: center; /* Center align heading */
+}
+
+/* Table styling */
+table, th, td {
+    border: 1px solid black; /* Black border for table, headers, and cells */
+    border-collapse: collapse; /* Collapse borders for table */
+    font-size: 20px; /* Font size for table text */
+}
+
+/* Table class styling for margin adjustments */
+.tbl {
+    margin-left: auto; /* Center align table horizontally */
+    margin-right: auto; /* Center align table horizontally */
+    margin-bottom: 20px; /* Bottom margin for table */
+    margin-top: 20px; /* Top margin for table */
+}
+
+/* Navigation styling */
+nav {
+    display: flex; /* Use flexbox for navigation layout */
+}
+
+/* Navigation form styling */
+.nav-form {
+    display: flex; /* Use flexbox for navigation form layout */
+}
+
+/* Submit button styling within navigation form */
+.nav-form input[type="submit"] {
+    background-color: var(--white); /* Background color for submit button */
+    padding: 10px; /* Padding for submit button */
+}
+
+/* Form styling */
+form {
+    width: 300px; /* Fixed width for form */
+    margin-left: auto; /* Center align form horizontally */
+    margin-right: auto; /* Center align form horizontally */
+}
+
+/* Label styling within form */
+form label {
+    display: flex; /* Flex display for labels */
+    margin-top: 20px; /* Top margin for labels */
+    font-size: 25px; /* Font size for labels */
+}
+
+/* Input field styling within form */
+form input {
+    height: 25px; /* Fixed height for input fields */
+    width: 100%; /* Full width for input fields */
+    padding: 7px; /* Padding for input fields */
+    border: none; /* Remove border */
+    border: 1px solid gray; /* Gray border for input fields */
+    border-radius: 10px; /* Rounded corners for input fields */
+    outline: none; /* Remove outline */
+    font-size: 20px; /* Font size for input text */
+}
+
+/* Submit button styling */
+input[type="submit"] {
+    width: 320px; /* Fixed width for submit button */
+    height: 35px; /* Fixed height for submit button */
+    margin-top: 10px; /* Top margin for submit button */
+    margin-bottom: 5px; /* Bottom margin for submit button */
+    border: none; /* Remove border */
+    background-color: var(--primary-color); /* Background color for submit button */
+    color: black; /* Text color for submit button */
+    font-size: 25px; /* Font size for submit button text */
+    cursor: pointer; /* Pointer cursor on hover */
+    border-radius: 10px; /* Rounded corners for submit button */
+}
+
+/* Hover effect for submit button */
+input[type="submit"]:hover {
+    color: white; /* Change text color to white on hover */
+    background: var(--primary-color-dark); /* Change background color on hover */
+}
+
+/* Signup, update, and delete section styling */
+.signup, .update, .delete {
+    width: 500px; /* Fixed width for sections */
+    height: auto; /* Automatic height */
+    margin: auto; /* Center align sections */
+    background: white; /* Background color for sections */
+    border-radius: 50px; /* Rounded corners for sections */
+}
+
+/* Navigation logo styling */
+.nav-logo a {
+    color: var(--text-dark); /* Text color for navigation logo */
+    text-decoration: none; /* Remove underline from links */
+    font-size: 30px; /* Font size for navigation logo */
+}
+
+/* Span styling within navigation logo */
+.nav-logo a span {
+    color: var(--primary-color); /* Color for span within logo */
+}
+
+/* Navigation menu styling (hidden by default) */
+.nav-menu {
+    display: none; /* Hide navigation menu */
+}
+
+/* Navigation links styling */
+.nav-links {
+    position: static; /* Static positioning for links */
+    padding: 0; /* Remove padding */
+    flex-direction: row; /* Row layout for links */
+    background-color: transparent; /* Transparent background for links */
+    transform: none; /* No transformation */
+}

@@ -1,0 +1,216 @@
+/* Importing Google Fonts for Poppins with various font weights */
+@import url("https://fonts.googlrapis.com/css2?famili=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+/* Universal reset for margin, padding, and box-sizing */
+* {
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    box-sizing: border-box; /* Use border-box model for sizing */
+    font-family: "Poppins", sans-serif; /* Set default font family */
+}
+
+/* Body styling for centering content */
+body {
+   /*  background: linear-gradient(135deg, #71b7e6, #9b59b6); */ /* Optional gradient background */
+   background: #ffffff; /* Set background color to white */
+    display: flex; /* Use flexbox for layout */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    height: 100vh; /* Full height of the viewport */
+    padding: 10px; /* Padding around the body */
+    background-size: cover; /* Cover background */
+    background-position: center; /* Center background */
+}
+
+/* Signup form styling */
+.signup {
+    max-width: 70%; /* Maximum width for signup form */
+    width: 100%; /* Full width of the signup form */
+    background: transparent; /* Transparent background */
+    padding: 25px 30px; /* Padding inside the signup form */
+    border-radius: 15px; /* Rounded corners */
+    backdrop-filter: blur(1px); /* Blur effect for background */
+    border: 2px solid black; /* Black border */
+    box-shadow: 0 0 5px #b304f8; /* Shadow effect */
+    color: black; /* Text color */
+}
+
+/* Title styling within signup form */
+.signup .title {
+    font-size: 35px; /* Font size for title */
+    font-weight: 500; /* Font weight for title */
+    text-align: center; /* Center align title */
+    position: relative; /* Relative positioning for title */
+    color: #b309f7; /* Color for title */
+}
+
+/* Title decoration */
+.signup .title::before {
+    content: ''; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    left: 0; /* Position from left */
+    bottom: 0; /* Position from bottom */
+    height: 3px; /* Height of the decoration */
+    width: 30px; /* Width of the decoration */
+}
+
+/* User details section styling */
+.signup form .user-details {
+    display: flex; /* Use flexbox for layout */
+    flex-wrap: wrap; /* Allow wrapping of items */
+    justify-content: space-between; /* Space between user detail items */
+    margin: 20px 0 12px 0; /* Margin for user details section */
+}
+
+/* Input box styling within user details */
+form .user-details .input-box {
+    margin-bottom: 15px; /* Bottom margin for input box */
+    width: calc(100% / 2 - 20px); /* Width of input box, accounting for margin */
+}
+
+/* Details label styling within user details */
+.user-details .input-box .details {
+    display: block; /* Block display for details label */
+    margin-bottom: 5px; /* Bottom margin for details label */
+    font-size: 30px; /* Font size for details label */
+}
+
+/* Input field styling within user details */
+.user-details .input-box input {
+    background: transparent; /* Transparent background for input */
+    color: black; /* Text color for input */
+    height: 45px; /* Fixed height for input */
+    width: 100%; /* Full width of the input */
+    outline: none; /* Remove outline */
+    border-radius: 5px; /* Rounded corners for input */
+    border: 2px solid black; /* Black border for input */
+    padding-left: 15px; /* Left padding for input */
+    font-size: 24px; /* Font size for input text */
+    border-bottom-width: 2px; /* Bottom border width */
+    transition: all 0.3s ease; /* Smooth transition for input */
+}
+
+/* Focus and valid state styling for input */
+.user-details .input-box input:focus,
+.user-details .input-box input:valid {
+    box-shadow: 0 0 10px #b304f8; /* Shadow effect on focus/valid */
+}
+
+/* Placeholder styling for input */
+.input-box input::placeholder {
+    color: #b0b0b0; /* Color for placeholder text */
+}
+
+/* Category section styling */
+form .input-box .category {
+    display: flex; /* Use flexbox for category layout */
+    width: 80%; /* Width for category section */
+    margin: 14px 0; /* Vertical margin for category section */
+    justify-content: space-evenly; /* Space evenly between items */
+}
+
+/* Category label styling */
+.input-box .category label {
+    display: flex; /* Flex display for label */
+    align-items: center; /* Center align items vertically */
+}
+
+/* Gender label styling */
+.input-box .category .gender {
+    font-size: 25px; /* Font size for gender label */
+}
+
+/* Dot styling for radio buttons */
+.input-box .category .dot {
+    height: 25px; /* Height for dot */
+    width: 25px; /* Width for dot */
+    background: #d9d9d9; /* Background color for dot */
+    border-radius: 50%; /* Rounded shape for dot */
+    margin-right: 10px; /* Right margin for dot */
+    border: 5px solid transparent; /* Transparent border */
+    transition: all 0.3s ease; /* Smooth transition for dot */
+}
+
+/* Checked state styling for radio buttons */
+#dot-4:checked~.category label .four,
+#dot-5:checked~.category label .five {
+    border-color: #d9d9d9; /* Border color for checked state */
+    background: #9b59b6; /* Background color for checked state */
+}
+
+/* Hiding radio button inputs */
+form input[type="radio"] {
+    display: none; /* Hide radio button inputs */
+}
+
+/* Button section styling */
+form .button {
+    height: 55px; /* Height for button section */
+    margin: 45px 0; /* Vertical margin for button section */
+    text-align: center; /* Center align button section */
+}
+
+/* Button input styling */
+form .button input {
+    height: 100%; /* Full height for button input */
+    width: 50%; /* Width for button input */
+    outline: none; /* Remove outline */
+    color: #fff; /* Text color for button input */
+    border: none; /* Remove border */
+    font-size: 26px; /* Font size for button input text */
+    font-weight: 500; /* Font weight for button input text */
+    letter-spacing: 1px; /* Letter spacing for button input text */
+    border-radius: 10px; /* Rounded corners for button input */
+    background: linear-gradient(135deg, #71b7e6, #9b59b6); /* Gradient background for button input */
+}
+
+/* Hover effect for button input */
+form .button input:hover {
+    background: linear-gradient(-135deg, #71b7e6, #9b59b6); /* Change gradient on hover */
+    color: #b309f7; /* Change text color on hover */
+}
+
+/* Log section styling */
+.log {
+    font-size: 25px; /* Font size for log section */
+    text-align: center; /* Center align log section */
+    margin: 20px 0 15px; /* Vertical margin for log section */
+}
+
+/* Link styling within log section */
+.log p a {
+    color: black; /* Black color for links */
+    text-decoration: none; /* Remove underline from links */
+    font-weight: 600; /* Bold text for links */
+}
+
+/* Hover effect for links in log section */
+.log p a:hover {
+    text-decoration: underline; /* Underline on hover */
+    color: #b309f7; /* Change color on hover */
+}
+
+/* Media query for responsive design */
+@media(max-width:584px) {
+    .signup {
+        max-width: 100%; /* Max width for signup form on small screens */
+    }
+
+    form .user-details .input-box {
+        margin-bottom: 15px; /* Bottom margin for input box on small screens */
+        width: 100%; /* Full width for input box on small screens */
+    }
+
+    form .gender-details .category {
+        width: 100%; /* Full width for category on small screens */
+    }
+
+    .signup form .user-details {
+        max-height: 300px; /* Max height for user details on small screens */
+        overflow-y: scroll; /* Enable vertical scroll if content overflows */
+    }
+
+    .user-details::-webkit-scrollbar {
+        width: 0; /* Hide scrollbar */
+    }
+}
