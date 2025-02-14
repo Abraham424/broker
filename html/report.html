@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="remixicon/remixicon.css">
+  <link rel="stylesheet" type="text/css" href="upload.css">
+  <style>
+</style>
+  <title>Generate Report</title>
+</head>
+
+<body>
+<div class="form"> 
+   <form action="/report" method="post" enctype="multipart/form-data">
+       <div class="grid">
+        <div class="form-element">
+        <input type="file" name="pdf_1" id="file-1" acceept="application/pdf" required>
+          <label for="file-1" id="file-1-preview">
+            <img id="imagePreview-1" src="../uploads/pdf.jpg">
+            <div>
+              <span>Document-1</span>
+            </div>
+          </label>
+        </div>
+        <div class="form-element">
+          <input type="file" name="pdf_2" id="file-2" acceept="image/*" required>
+          <label for="file-2" id="file-2-preview">
+            <img id="imagePreview-2"src="../uploads/pdf.jpg">
+            <div>
+              <span>Document-2</span>
+            </div>
+          </label>
+        </div>
+        <div class="form-element">
+          <input type="file" name="pdf_3" id="file-3" acceept="image/*" required>
+          <label for="file-3" id="file-3-preview">
+            <img id="imagePreview-3"src="../uploads/pdf.jpg">
+            <div>
+              <span>Document-3</span>
+            </div>
+          </label>
+        </div>
+      </div>
+
+<div class="button">
+    <input type="submit" value="Send Report">
+</div>
+    </form>
+    </div>
+    <script>
+    
+      document.getElementById('file-1').addEventListener('change', function(event) {
+         const file = event.target.files[0];
+         if (file) {
+             const reader = new FileReader();
+             reader.onload = function(e) {
+                 const img = document.getElementById('imagePreview-1');
+                 img.src = e.target.result;
+                 img.style.display = 'block';
+             };
+             reader.readAsDataURL(file);
+         }
+     });
+     document.getElementById('file-2').addEventListener('change', function(event) {
+         const file = event.target.files[0];
+         if (file) {
+             const reader = new FileReader();
+             reader.onload = function(e) {
+                 const img = document.getElementById('imagePreview-2');
+                 img.src = e.target.result;
+                 img.style.display = 'block';
+             };
+             reader.readAsDataURL(file);
+         }
+     }); document.getElementById('file-3').addEventListener('change', function(event) {
+         const file = event.target.files[0];
+         if (file) {
+             const reader = new FileReader();
+             reader.onload = function(e) {
+                 const img = document.getElementById('imagePreview-3');
+                 img.src = e.target.result;
+                 img.style.display = 'block';
+             };
+             reader.readAsDataURL(file);
+         }
+     }); 
+       </script>
+</body>
+
+</html>

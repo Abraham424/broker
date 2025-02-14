@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width-device-width, initial-scal=1.0">
+   <link rel="stylesheet" type="text/css" href="remixicon/remixicon.css">
+   <link rel="stylesheet" type="text/css" href="user.css">
+   <link rel="stylesheet" type="text/css" href="contact.css">
+   <title>contact us</title>
+</head>
+
+<body>
+  <nav class="nav-user">
+    <div class="nav-header">
+  <div class="nav-logo">
+    <a href="#">Gimba<span>Broker</span>.</a>
+  </div>
+  <div class="nav-menu" id="menu-btn">
+    <span><i class="ri-menu-line"></i></span>
+  </div>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li class="dropdown"><a href="/user?role=user"><i class="ri-shopping-cart-line"></i> Buy
+          <i class="ri-arrow-drop-down-line"></i>
+      </a>
+          <ul class="dropdown-content">
+              <a href="/bcars"><i class="ri-roadster-fill"></i> cars</a>
+              <a href="/bhouses"><i class="ri-home-4-line"></i> houses</a>
+            </ul>
+          </li>
+      <li class="dropdown"><a href="/upload"><i class="ri-add-circle-line"></i> Sell</li>
+      <li class="dropdown"><a href="/about"><i class="ri-information-line"></i> About</a></li>
+      <li class="dropdown"><a href="/help"><i class="ri-question-line"></i> Help</a></li>
+    <li class="dropdown"><a href="/feed"><i class="ri-feedback-line"></i> feedback</a></li>
+    <li class="dropdown"><a href="/profile"><i class="ri-user-line"></i> Profile</a></li>
+      <li class="dropdown"><a href="/logout"><i class="ri-logout-box-line"> </i> Logout</a></li>
+      <li class="dropdown">
+      </li>
+      </ul>
+  </nav>
+  <script>
+      // Function to load the header
+      function loadHeader() {
+        fetch('/header.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Error loading header:', error);
+            });
+    }
+      // Call loadHeader and fetchData on page load
+      window.onload = function() {
+        loadHeader();
+      };
+</script>
+
+  <div class="contact-container" id="contact">
+    <div class="contact-header">
+      <h1>Contact Us</h1>
+      <p>
+        We're here to help! If you have any questions, concerns, or just want to 
+        chat about our services, don't hesitate to reach out. Our team at 
+        Gimba Broker System is always ready to assist you.
+      </p>
+    </div>
+    <div class="contact-content">
+      <div class="content-form">
+        <section>
+          <i class="ri-map-pin-line"></i>
+          <h2>address</h2>
+          <p>
+            south Wollo,<br>
+            80km away from dessie,<br>
+            460km away from dessie,<br>
+            Gimba Town
+          </p>
+        </section>
+        <section>
+          <i class="ri-phone-line"></i>
+          <h2>phone</h2>
+          <p>+251-960-337-273</p>
+          <p>+251-963-648-627</p>
+        </section>
+        <section>
+          <i class="ri-mail-line"></i>
+          <h2>E-mail</h2>
+          <p>abrahamdessie077@gmail.com</p>
+          <p>abrahamdessie1616@gmail.com</p>
+        </section>
+      </div>
+      <div class="form">
+    <form action="/contact" method="post">
+        <div class="right">
+          <div class="contact-form">
+            <span>First name</span>
+            <input type="text" name="fname">
+          </div>
+          <div class="contact-form">
+            <span>Last name</span>
+            <input type="text" name="lname">
+          </div>
+          <div class="contact-form">
+            <span>E-mail</span>
+            <input type="E-mail" name="email">         
+          </div>
+          <div class="contact-form">
+            <textarea type="text" name="feedback" id="" placeholder="Type your message ..."></textarea>
+          </div>
+          <div class="contact-form">
+            <input type="submit" name="feed" value="send">
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+      <div class="media">
+     <a href="https://web.facebook.com/?_rdc=1&_rdr"><li><i class="ri-facebook-circle-fill"></i></li></a>
+     <a href="https://www.instagram.com/dessieabrsh/"><li><i class="ri-instagram-line"></i></li></a>
+     <a href="https://x.com/abrsh1616"><li><i class="ri-twitter-fill"></i></li></a>
+     <a href="https://accounts.google.com/SignOutOptions?hl=en-GB&continue=https://mail.google.com/mail&service=mail&ec=GBRAFw"><li><i class="ri-mail-line"></i></li></a>
+   </div>
+
+  <script src="js/scrollreveal.min.js"></script>
+  <script src="js/index.js"></script>
+</body>
+
+</html>

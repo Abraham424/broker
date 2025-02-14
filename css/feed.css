@@ -1,0 +1,207 @@
+/* Contact Us Styles */
+
+/* Root variables for color and font settings */
+:root {
+    --primary-color: #ff833e; /* Main color used throughout the site */
+    --primary-color-dark: #db6f35; /* Darker shade of primary color */
+    --text-dark: #333333; /* Dark text color */
+    --text-light: #767268; /* Light text color */
+    --white: #ffffff; /* White color */
+    --max-width: 1200px; /* Maximum width for layout */
+    --header-font: "Bebas Neue", sans-serif; /* Font for headers */
+}
+
+/* Universal reset for padding, margin, and box-sizing */
+* {
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+    box-sizing: border-box; /* Use border-box model for sizing */
+}
+
+/* Body font settings */
+body {
+    font-family: "Poppins", sans-serif; /* Main font for the body */
+}
+
+/* Contact container styling */
+.contact-container {
+    background: #723d1e; /* Dark brown background */
+    width: 100%; /* Full width */
+    height: 100vh; /* Full viewport height */
+    background-size: 100% 100vh; /* Background size */
+    position: relative; /* Relative positioning */
+    background-repeat: no-repeat; /* No repeat for background */
+}
+
+/* Form styling */
+.form {
+    width: 20%; /* Width of the form */
+    display: flex; /* Use flexbox for layout */
+    position: absolute; /* Absolute positioning */
+    top: 0; /* Align to top */
+    left: 0; /* Align to left */
+    margin-left: 40%; /* Center align horizontally */
+    justify-content: center; /* Center items */
+    align-items: center; /* Center items vertically */
+    min-height: 110vh; /* Minimum height */
+}
+
+/* Contact form text styling */
+.contact-form {
+    font-size: 25px; /* Font size for contact form */
+    color: white; /* Text color */
+}
+
+/* Input field styling within the form */
+.form .contact-form input {
+    width: 30rem; /* Fixed width for input fields */
+    background-color: transparent; /* Transparent background */
+    border: 1px; /* Border width */
+    border: transparent; /* No border */
+    margin: 10px; /* Margin for spacing */
+    padding: 20px; /* Padding for comfort */
+    font-size: 18px; /* Font size */
+    border-bottom: 2px solid #fff; /* Bottom border */
+}
+
+/* Span styling for input labels */
+.form .contact-form input ~ span {
+    position: absolute; /* Absolute positioning */
+    left: 20px; /* Left positioning */
+    transition: 0.9s ease-in-out; /* Transition effect */
+    margin-top: 10px; /* Top margin */
+}
+
+/* Focus effect for input fields */
+.form .contact-form input:focus ~ span {
+    transform: translateY(-20px); /* Move label up on focus */
+    pointer-events: none; /* Disable pointer events */
+}
+
+/* Content form input styling */
+.form .content-form input {
+    width: 50rem; /* Fixed width */
+    border: 0; /* No border */
+    background-color: transparent; /* Transparent background */
+    margin: 20px; /* Margin for spacing */
+    font-size: 17px; /* Font size */
+    border-bottom: 5px solid #fff; /* Bottom border */
+}
+
+/* Textarea styling */
+textarea {
+    width: 100%; /* Full width */
+    height: 100px; /* Fixed height */
+    background-color: transparent; /* Transparent background */
+    font-size: 30px; /* Font size */
+    border-radius: 10px; /* Rounded corners */
+}
+
+/* Input field styling for text type */
+.form .contact-form input[type=text] {
+    font-size: 30px; /* Font size */
+    border-radius: 10px; /* Rounded corners */
+}
+
+/* Input field styling for email type */
+.form .contact-form input[type=E-mail] {
+    font-size: 30px; /* Font size */
+    border-radius: 10px; /* Rounded corners */
+}
+
+/* Submit button styling */
+.form .contact-form input[type=submit] {
+    background-color: var(--primary-color); /* Primary color for background */
+    border: 2px solid var(--primary-color-dark); /* Border color */
+    font-size: 20px; /* Font size */
+    width: 50%; /* Width of button */
+    height: 50px; /* Height of button */
+    margin-top: 5px; /* Top margin */
+    margin-left: 25%; /* Left margin for centering */
+    border-radius: 10px; /* Rounded corners */
+    color: black; /* Text color */
+    align-items: center; /* Center items */
+}
+
+/* Hover effect for submit button */
+.form .contact-form input[type=submit]:hover {
+    background-color: var(--primary-color-dark); /* Darker background on hover */
+    color: var(--white); /* Change text color on hover */
+}
+
+/* Media links styling */
+.media {
+    position: absolute; /* Absolute positioning */
+    top: 85vh; /* Position from top */
+    right: 20vh; /* Position from right */
+    display: flex; /* Use flexbox for layout */
+    list-style: none; /* Remove list styling */
+}
+
+/* Media list item styling */
+.media li {
+    margin: 20px 30px; /* Margin for spacing */
+    height: 20px; /* Fixed height */
+    width: 70px; /* Fixed width */
+}
+
+/* Media query for screens smaller than 900px */
+@media screen and (max-width: 900px) {
+    .contact-container {
+        background-repeat: repeat-y; /* Repeat background vertically */
+        overflow: auto; /* Allow overflow */
+    }    
+    .form {
+        position: absolute; /* Absolute positioning */
+        top: 100vh; /* Position from top */
+        margin-left: 10%; /* Left margin for positioning */
+    }
+}
+
+/* Feed Table Styles */
+.ftbl {
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: #fff; /* White background */
+}
+
+/* Heading styling */
+h1 {
+    font-size: 30px; /* Font size for heading */
+    color: coral; /* Coral text color */
+    text-align: center; /* Center align text */
+}
+
+/* Table styling */
+table, th, td {
+    font-size: 20px; /* Font size for table */
+    border: 1px solid black; /* Border for table cells */
+    border-collapse: collapse; /* Collapse borders */
+}
+
+/* Table margin styling */
+.tbl {
+    margin-left: auto; /* Center align left */
+    margin-right: auto; /* Center align right */
+    margin-bottom: 20px; /* Bottom margin */
+}
+
+/* Submit button styling for forms */
+input[type="submit"] {
+    margin-left: 40%; /* Left margin for centering */
+    width: 20%; /* Width of button */
+    height: 35px; /* Height of button */
+    margin-top: 10px; /* Top margin */
+    border: none; /* No border */
+    background: var(--primary-color); /* Primary color for background */
+    color: black; /* Text color */
+    font-size: 25px; /* Font size */
+    border-radius: 10px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+/* Hover effect for submit button */
+input[type="submit"]:hover {
+    color: white; /* Change text color on hover */
+    background: var(--primary-color-dark); /* Darker background on hover */
+}

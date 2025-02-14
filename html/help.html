@@ -1,0 +1,95 @@
+<!DOCTYPE ltml>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width-device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="remixicon/remixicon.css">
+  <link rel="stylesheet" type="text/css" href="user.css">
+  <link rel="stylesheet" type="text/css" href="help.css">
+  <title>Help Center</title>
+</head>
+<body>
+    <nav class="nav-user">
+        <div class="nav-header">
+      <div class="nav-logo">
+        <a href="#">Gimba<span>Broker</span>.</a>
+      </div>
+      <div class="nav-menu" id="menu-btn">
+        <span><i class="ri-menu-line"></i></span>
+      </div>
+        </div>
+        <ul class="nav-links" id="nav-links">
+          <li class="dropdown"><a href="/user?role=user"><i class="ri-shopping-cart-line"></i> Buy
+              <i class="ri-arrow-drop-down-line"></i>
+          </a>
+              <ul class="dropdown-content">
+                  <a href="/bcars"><i class="ri-roadster-fill"></i> cars</a>
+                  <a href="/bhouses"><i class="ri-home-4-line"></i> houses</a>
+                </ul>
+              </li>
+          <li class="dropdown"><a href="/upload"><i class="ri-add-circle-line"></i> Sell</li>
+          <li class="dropdown"><a href="/about"><i class="ri-information-line"></i> About</a></li>
+          <li class="dropdown"><a href="/contact"><i class="ri-phone-line"></i> Contact</a></li>
+          <li class="dropdown"><a href="/profile"><i class="ri-user-line"></i> Profile</a></li>
+          <li class="dropdown"><a href="/logout"><i class="ri-logout-box-line"> </i> Logout</a></li>
+          <li class="dropdown">
+          </li>
+          </ul>
+      </nav>
+      
+  <div class="helps" id="help">
+        <div class="search-container">
+          <button id="help-dropdown-btn">Help Articles</button>
+          <div id="dropdown" class="dropdown" style="display: none;"></div> <!-- Set to none -->
+        </div>
+      
+        <div id="result" class="result"></div>
+      
+        <script>
+            // Sample help articles
+            const helpArticles = [
+                { title: "How to Reset Your Password", content: "To reset your password, go to the login page and click on 'Forgot Password?'. Follow the instructions sent to your email." },
+                { title: "How to Change Your Profile", content: "You can change your email address in the Profile section." },
+                { title: "How to Contact Support", content: "To contact support, visit our contact page and fill out the contact form." },
+                { title: "How to Delete Your Account", content: "If you wish to delete your account, please contact us." },
+                { title: "How to Delete or update Your posted property", content: "If you wish to delete or update your posted property, please contact us." }
+            ];
+      
+            const dropdownBtn = document.getElementById('help-dropdown-btn');
+            const dropdown = document.getElementById('dropdown');
+            const resultContainer = document.getElementById('result');
+      
+            // Populate dropdown with help articles
+            helpArticles.forEach(article => {
+                const div = document.createElement('div');
+                div.className = 'dropdown-item';
+                div.textContent = article.title;
+                div.onclick = () => {
+                    displayResult(article); // Display the selected article content
+                    dropdown.style.display = 'none'; // Hide dropdown after selection
+                };
+                dropdown.appendChild(div);
+            });
+      
+            // Toggle dropdown visibility on button click
+            dropdownBtn.addEventListener('click', () => {
+                dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+            });
+      
+            function displayResult(article) {
+                // Display the selected article content
+                resultContainer.innerHTML = `<h3>${article.title}</h3><p>${article.content}</p>`;
+            }
+      
+            // Close the dropdown if the user clicks outside of it
+            window.addEventListener('click', (event) => {
+                if (!event.target.matches('#help-dropdown-btn') && !event.target.matches('.dropdown-item')) {
+                    dropdown.style.display = 'none';
+                }
+            });
+        </script>
+        <script src="js/scrollreveal.min.js"></script>
+        <script src="js/index.js"></script>
+      </div>
+</body>
+</html>

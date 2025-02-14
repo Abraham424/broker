@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="remixicon/remixicon.css">
+  <link rel="stylesheet" type="text/css" href="upload.css">
+  <style>
+</style>
+  <title>upload property</title>
+</head>
+
+<body>
+<div class="form"> 
+   <form action="/upload" method="post" enctype="multipart/form-data">
+       <div class="grid">
+        <div class="form-element">
+        <input type="file" name="my_image_1" id="file-1" acceept="image/*" required>
+          <label for="file-1" id="file-1-preview">
+            <img id="imagePreview-1" src="../uploads/upload.jpg">
+            <div>
+              <span>Choose</span>
+            </div>
+          </label>
+        </div>
+        <div class="form-element">
+          <input type="file" name="my_image_2" id="file-2" acceept="image/*" required>
+          <label for="file-2" id="file-2-preview">
+            <img id="imagePreview-2"src="../uploads/upload.jpg">
+            <div>
+              <span>Choose</span>
+            </div>
+          </label>
+        </div>
+        <div class="form-element">
+          <input type="file" name="my_image_3" id="file-3" acceept="image/*" required>
+          <label for="file-3" id="file-3-preview">
+            <img id="imagePreview-3"src="../uploads/upload.jpg">
+            <div>
+              <span>Choose</span>
+            </div>
+          </label>
+        </div>
+        <div class="form-element">
+          <input type="file" name="my_image_4" id="file-4" acceept="image/*" required>
+          <label for="file-4" id="file-4-preview">
+            <img id="imagePreview-4"src="../uploads/upload.jpg">
+            <div>
+              <span>Choose</span>
+            </div>
+          </label>
+        </div>
+        <div class="form-element">
+          <input type="file" name="my_image_5" id="file-5" acceept="image/*" required>
+          <label for="file-5" id="file-5-preview">
+            <img id="imagePreview-5"src="../uploads/upload.jpg">
+            <div>
+              <span>Libry/house map</span>
+            </div>
+          </label>
+        </div>
+      </div>
+      <div class="user-details">
+        <div class="input-box">
+            <span class="details">Email </span>
+            <input type="email" placeholder="Enter your email" name="email" required>
+        </div>
+        <div class="input-box">
+            <span class="details">Price</span>
+            <input type="number" placeholder="Enter price of property with 2% commission" name="price" required 
+            title="You shoud enter the correct price and you pay 2% commission"
+            >
+        </div>
+        <div class="input-box">
+            <span class="details">Description</span>
+            <input type="text" placeholder="Enter simple discription of property" name="model" required
+            title="You shoud enter small & correct discription , model and type for property"
+            >
+        </div>
+        <div class="input-box">
+          <span class="details">Bank account number</span>
+          <input type="number" placeholder="Enter your bank account no" name="acount" required 
+                 pattern="^[0-9]{8}$" 
+                 title="Please enter a valid bank acount number (exactly 8 digits)"
+                 maxlength="8" minlength="8">
+      </div>
+
+<div class="input-box">
+  <span class="details">Type</span>
+  <input type="radio" name="cat" id="dot-4" value="car" required>
+  <input type="radio" name="cat" id="dot-5" value="house" required>
+  <div class="category">
+      <label for="dot-4">
+       <span class="dot four"></span>  
+       <span class="gender"><i class="ri-roadster-fill"></i> Car</span>
+      </label>
+      <label for="dot-5">
+          <span class="dot five"></span>  
+          <span class="gender"><i class="ri-home-4-line"></i> house</span>
+         </label>
+  </div>
+</div>
+</div>
+<div class="button">
+    <input type="submit" value="Upload">
+</div>
+    </form>
+    </div>
+
+  <script>
+    
+ document.getElementById('file-1').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const img = document.getElementById('imagePreview-1');
+            img.src = e.target.result;
+            img.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+    }
+});
+document.getElementById('file-2').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const img = document.getElementById('imagePreview-2');
+            img.src = e.target.result;
+            img.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+    }
+}); document.getElementById('file-3').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const img = document.getElementById('imagePreview-3');
+            img.src = e.target.result;
+            img.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+    }
+}); document.getElementById('file-4').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const img = document.getElementById('imagePreview-4');
+            img.src = e.target.result;
+            img.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+    }
+}); document.getElementById('file-5').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const img = document.getElementById('imagePreview-5');
+            img.src = e.target.result;
+            img.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+    }
+});
+  </script>
+</body>
+
+</html>

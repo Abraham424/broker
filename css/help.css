@@ -1,0 +1,130 @@
+/* Importing Google Fonts for Bebas Neue and Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Root variables for color and font settings */
+:root {
+    --primary-color: #ff833e; /* Main color used throughout the site */
+    --primary-color-dark: #db6f35; /* Darker shade of primary color */
+    --text-dark: #333333; /* Dark text color */
+    --text-light: #767268; /* Light text color */
+    --white: #ffffff; /* White color */
+    --max-width: 1200px; /* Maximum width for layout */
+    --header-font: "Bebas Neue", sans-serif; /* Font for headers */
+}
+
+/* Universal reset for padding, margin, and box-sizing */
+* {
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+    box-sizing: border-box; /* Use border-box model for sizing */
+}
+
+/* Image styling */
+img {
+    display: flex; /* Use flexbox for image display */
+    width: 100%; /* Full width for images */
+}
+
+/* Link styling */
+a {
+    text-decoration: none; /* Remove underline from links */
+    transition: 0.3s; /* Smooth transition for hover effects */
+}
+
+/* Body font settings */
+body {
+    font-family: "Poppins", sans-serif; /* Main font for the body */
+}
+
+/* Paragraph styling */
+p {
+    text-align: justify; /* Justify text alignment */
+    columns: var(--text-light); /* Set column color */
+    line-height: 1.6; /* Line height for readability */
+}
+
+/* Helps section styling */
+.helps {
+    padding-top: 80px; /* Top padding for helps section */
+}
+
+/* Header styling within helps section */
+.helps h1 {
+    text-align: center; /* Center align text */
+    color: var(--primary-color); /* Primary color for header */
+}
+
+/* Subheader styling within helps section */
+.helps h3 {
+    color: var(--primary-color); /* Primary color for subheader */
+}
+
+/* Search container styling */
+.search-container {
+    width: 100%; /* Full width for search container */
+    margin-top: 10px; /* Top margin for spacing */
+    text-align: center; /* Center align text */
+}
+
+/* Button styling within search container */
+.search-container button {
+    width: 30%; /* Width of button */
+    margin-top: 10px; /* Top margin for spacing */
+    text-align: center; /* Center align text */
+    height: 50px; /* Height of button */
+    font-size: 30px; /* Font size for button */
+    font-weight: 600; /* Font weight */
+    background-color: var(--primary-color); /* Primary color for background */
+    border-radius: 10px; /* Rounded corners */
+}
+
+/* Hover effect for search container button */
+.search-container button:hover {
+    color: var(--white); /* Change text color on hover */
+    background-color: var(--primary-color-dark); /* Darker background on hover */
+}
+
+/* List item styling within search container */
+.search-container li {
+    width: auto; /* Auto width for list items */
+    align-items: center; /* Center align items */
+    font-size: 25px; /* Font size for list items */
+}
+
+/* Dropdown item styling */
+.dropdown-item {
+    margin-left: 25%; /* Left margin for dropdown items */
+    width: 50%; /* Fixed width */
+    padding: 10px; /* Padding for comfort */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+/* Hover effect for dropdown items */
+.dropdown-item:hover {
+    background-color: #f0f0f0; /* Highlight on hover */
+}
+
+/* Result box styling */
+.result {
+    align-items: center; /* Center align items */
+    margin-left: 15%; /* Left margin for positioning */
+    width: 70%; /* Fixed width */
+    height: 200px; /* Fixed height */
+    margin-top: 20px; /* Top margin for spacing */
+    border: 1px solid #ddd; /* Light gray border */
+    padding: 10px; /* Padding for comfort */
+    border-radius: 4px; /* Rounded corners */
+}
+
+/* Bottom bar styling */
+.bar {
+    border-radius: 10px; /* Rounded corners */
+    position: fixed; /* Fixed positioning */
+    bottom: 0; /* Align to bottom */
+    width: 100%; /* Full width */
+    font-size: 18px; /* Font size */
+    text-align: center; /* Center align text */
+    background: black; /* Black background */
+    color: white; /* White text color */
+    margin-top: 24%; /* Top margin for spacing */
+}

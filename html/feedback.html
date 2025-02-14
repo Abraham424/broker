@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" type="text/css" href="remixicon/remixicon.css">
+   <link rel="stylesheet" type="text/css" href="user.css">
+   <link rel="stylesheet" type="text/css" href="contact.css">
+   <title>Send Feedback</title>
+   <style>
+
+   </style>
+</head>
+
+<body>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const stars = document.querySelectorAll('.star');
+      const ratingValue = document.getElementById('rating-value');
+      const ratingInput = document.getElementById('rating-input');
+    
+      stars.forEach(star => {
+          star.addEventListener('click', () => {
+              const value = star.getAttribute('data-value');
+              console.log(`Star clicked with value: ${value}`); // Debugging line
+    
+              // Clear previous selection
+              stars.forEach(s => s.classList.remove('selected'));
+    
+              // Highlight selected stars
+              for (let i = stars.length - 1; i >= stars.length - value; i--) {
+                  stars[i].classList.add('selected');
+              }
+    
+              // Update rating value display and hidden input
+              ratingValue.textContent = value;
+              ratingInput.value = value; // Set hidden input to rating value
+              console.log(`Updated rating value: ${ratingValue.textContent}`); // Debugging line
+          });
+      });
+    });
+  </script>
+
+  <nav class="nav-user">
+    <div class="nav-header">
+      <div class="nav-logo">
+        <a href="#">Gimba<span>Broker</span>.</a>
+      </div>
+      <div class="nav-menu" id="menu-btn">
+        <span><i class="ri-menu-line"></i></span>
+      </div>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li class="dropdown"><a href="/user?role=user"><i class="ri-shopping-cart-line"></i> Buy
+          <i class="ri-arrow-drop-down-line"></i>
+      </a>
+      <ul class="dropdown-content">
+          <a href="/bcars"><i class="ri-roadster-fill"></i> cars</a>
+          <a href="/bhouses"><i class="ri-home-4-line"></i> houses</a>
+        </ul>
+      </li>
+      <li class="dropdown"><a href="/upload"><i class="ri-add-circle-line"></i> Sell</li>
+      <li class="dropdown"><a href="/about"><i class="ri-information-line"></i> About</a></li>
+      <li class="dropdown"><a href="/help"><i class="ri-question-line"></i> Help</a></li>
+      <li class="dropdown"><a href="/contact"><i class="ri-phone-line"></i> Contact</a></li>
+      <li class="dropdown"><a href="/profile"><i class="ri-user-line"></i> Profile</a></li>
+      <li class="dropdown"><a href="/login"><i class="ri-logout-box-line"> </i> Logout</a></li>
+    </ul>
+  </nav>
+
+  <div class="contact-container" id="contact">
+    <div class="contact-content">
+      <div class="form">
+        <form action="/feed" method="post" id="feedback-form">
+            <div class="right">
+                <div class="contact-form">
+                    <span>First name</span>
+                    <input type="text" name="fname" required>
+                </div>
+                <div class="contact-form">
+                    <span>Last name</span>
+                    <input type="text" name="lname" required>
+                </div>
+                <div class="contact-form">
+                    <span>E-mail</span>
+                    <input type="email" name="email" required>
+                </div>
+                <div class="contact-form">
+                    <textarea name="feedback" placeholder="Type your message ..." required></textarea>
+                </div>
+                <input type="hidden" name="rating" id="rating-input" value="0">
+                <div class="contact-form">
+                    <p>Rate Your Experience</p>
+                    <div class="star-rating">
+                        <span class="star" data-value="5">&#9733;</span>
+                        <span class="star" data-value="4">&#9733;</span>
+                        <span class="star" data-value="3">&#9733;</span>
+                        <span class="star" data-value="2">&#9733;</span>
+                        <span class="star" data-value="1">&#9733;</span>
+                    </div>
+                    <p>Your rating: <span id="rating-value">0</span></p>
+                </div>
+                <div class="contact-form">
+                  <input type="submit" name="feed" value="Send">
+              </div>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/scrollreveal.min.js"></script>
+  <script src="js/index.js"></script>
+</body>
+
+</html>

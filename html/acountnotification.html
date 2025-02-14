@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notification</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .notif {
+      max-width: 75%;
+      margin: auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    #data {
+      margin-top: 20px;
+    }
+
+    table {
+      width: 100%;
+      margin-bottom: 20px;
+      border-collapse: collapse;
+    }
+
+    tr {
+      background-color: rgb(197, 193, 193);
+    }
+
+    td {
+      padding: 15px;
+      vertical-align: top;
+      border: 1px solid #ddd;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    input[type="submit"] {
+    width: 150px; /* Fixed width for submit button */
+    height: 35px; /* Fixed height for submit button */
+    margin-top: 10px; /* Top margin for submit button */
+    border: none; /* Remove border */
+    background-color: #ff7200; /* Background color for button */
+    color: black; /* Text color for button */
+    font-size: 25px; /* Font size for button text */
+    cursor: pointer; /* Pointer cursor on hover */
+    border-radius: 10px; /* Rounded corners for button */
+}
+
+/* Hover effect for submit button */
+input[type="submit"]:hover {
+    color: white; /* Change text color to white on hover */
+    background: #be5703c2; /* Change background color on hover */
+}
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 5px;
+    }
+
+    .no-notification {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 18px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="notif">
+    <div id="data">
+        <script>
+            // Function to fetch data from the server
+            function fetchData() {
+              fetch('/api/data/acountnotif')
+                .then(response => {
+                  if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                  }
+                  return response.json();
+                })
+                .then(data => {
+                  const container = document.getElementById('data');
+                  if (data.length > 0) {
+                    data.forEach(item => {
+                      const div = document.createElement('div');
+                      div.innerHTML = `
+                        <table>
+                          <tr>
+                            <td>
+                              <h2>
+                                First Name: ${item.fname} <br>
+                                Last Name: ${item.lname} <br>
+                                Gender: ${item.gender} <br>
+                                Phone: ${item.phone} <br>
+                                Address: ${item.address} <br>
+                                Email: ${item.email} <br>
+                                Account: ${item.acount} <br>
+                                Role: ${item.role}
+                              </h2>
+                              <form method="post" action="/accaprove">
+                                <input type="hidden" name="userid" value="${item.userId}"> 
+                                <input type="hidden" name="mail" value="${item.email}"> 
+                                <input type="submit" name="aprove" value="Approve">
+                              </form>
+                              <br>
+                              <form method="post" action="/accdisaprove">
+                                <input type="hidden" name="userid" value="${item.userId}"> 
+                                <input type="hidden" name="mail" value="${item.email}"> 
+                                <input type="submit" name="disaprove" value="Disapprove">
+                              </form>
+                            </td>
+                            <td>
+                              <img src="../idcard/${item.idcard}" alt="ID Card Image">
+                            </td>
+                          </tr>
+                        </table>
+                      `;
+                      container.appendChild(div);
+                    });
+                  } else {
+                    const div = document.createElement('div');
+                    div.className = 'no-notification';
+                    div.innerHTML = `
+                      <h3>There are no properties that have been uploaded. 
+                      <br> 
+                      Thank you! Please visit later.
+                      </h3>
+                    `;
+                    container.appendChild(div);
+                  }
+                })
+                .catch(error => {
+                  console.error('There was a problem with the fetch operation:', error);
+                });
+            }
+    
+            // Call fetchData on page load
+            window.onload = fetchData;
+          </script>
+    </div>
+  </div>
+</body>
+</html>

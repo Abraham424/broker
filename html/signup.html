@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width-device-width, initial-scal">
+    <link rel="stylesheet" type="text/css" href="signup.css">
+      <title>form of registration</title>
+</head>
+
+<body>
+    <div class="signup">
+        <div class="title"> Registration</div>  
+        <form action="/signup" method="post" id="registration-form" enctype="multipart/form-data">
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">First name</span>
+                    <input type="text" placeholder="enter your first name" name="fname" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Last name</span>
+                    <input type="text" placeholder="enter your last name" name="lname" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Email</span>
+                    <input type="email" placeholder="enter your email" name="mail" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Phone number</span>
+                    <input type="tel" placeholder="Enter your phone number" name="number" required
+                           pattern="^0[0-9]{9}$" 
+                           title="Please enter a valid phone number (must start with 0 and be exactly 10 digits long)"
+                           maxlength="10" minlength="10">
+                </div>
+            <div class="input-box">
+                <span class="details">Password</span>
+                <input type="password" name="pass" required
+                title="You must include uppercase,lowercase,numberand,special character with minimum length 8 "
+                >
+            </div>
+            <div class="input-box">
+                <span class="details">Confirm password</span>
+                <input type="password"  name="cpass" required>
+            </div>
+
+            <div class="input-box">
+                <span class="details">Bank account number</span>
+                <input type="number" placeholder="Enter your bank account no" name="acount" required 
+                       pattern="^[0-9]{8}$" 
+                       title="Please enter a valid bank acount number (exactly 8 digits)"
+                       maxlength="8" minlength="8">
+            </div>
+            <div class="input-box">
+                <span class="details">Address</span>
+                <input type="text" placeholder="enter your address" name="add" required>
+            </div>
+            <div class="input-box">
+                <span class="details">Gender</span>
+                <input type="radio" name="gender" id="dot-4" value="male" required>
+                <input type="radio" name="gender" id="dot-5" value="female" required>
+                <div class="category">
+                <label for="dot-4">
+                <span class="dot four"></span>  
+                <span class="gender">Male</span>
+                </label>
+                <label for="dot-5">
+                <span class="dot five"></span>  
+                <span class="gender">Female</span>
+                        </label>
+                    </div>
+                </div>   
+                <div class="input-box">
+                    <span class="details">id card image</span>
+                    <input type="file" name="idcard" id="file-1" acceept="image/*" required>                    
+                </div>
+            </div>
+        <div class="button">
+            <input type="submit" value="Register">
+        </div>
+        <div class="log">
+            <p>
+                if you have an account ?
+                <a href="/login">Login</a>
+            </p>
+        </div>
+            </form>
+            </div>
+</body>
+</html>
