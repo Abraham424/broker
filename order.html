@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="remixicon/remixicon.css">
+  <link rel="stylesheet" type="text/css" href="user.css">
+  <link rel="stylesheet" type="text/css" href="order.css">
+  <title>Order Property</title>
+</head>
+<body>
+
+  <nav class="nav-user">
+    <div class="nav-header">
+      <div class="nav-logo">
+        <a href="#">Gimba<span>Broker</span>.</a>
+      </div>
+      <div class="nav-menu" id="menu-btn">
+        <span><i class="ri-menu-line"></i></span>
+      </div>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li class="dropdown"><a href="/user?role=user"><i class="ri-shopping-cart-line"></i> Buy
+          <i class="ri-arrow-drop-down-line"></i>
+      </a>
+      <ul class="dropdown-content">
+          <a href="/bcars"><i class="ri-roadster-fill"></i> cars</a>
+          <a href="/bhouses"><i class="ri-home-4-line"></i> houses</a>
+      </ul>
+      </li>
+      <li class="dropdown"><a href="/upload"><i class="ri-add-circle-line"></i> Sell</a></li>
+      <li class="dropdown"><a href="/about"><i class="ri-information-line"></i> About</a></li>
+      <li class="dropdown"><a href="/help"><i class="ri-question-line"></i> Help</a></li>
+      <li class="dropdown"><a href="/contact"><i class="ri-phone-line"></i> Contact</a></li>
+      <li class="dropdown"><a href="/profile"><i class="ri-user-line"></i> Profile</a></li>
+      <li class="dropdown"><a href="/logout"><i class="ri-logout-box-line"> </i> Logout</a></li>
+    </ul>
+  </nav>
+
+  <div class="orde" id="data">
+    <h1>See the property detail carefully</h1>
+    <div id="image-display"></div>
+    <div class="button-container">
+      <button id="prev-button" style="display: none;">Previous</button>
+      <button id="next-button">Next</button>
+    </div>
+
+    <script>
+      let images = [];
+      let currentIndex = 0;
+      let propertyId, category, price, fname, lname, description;
+
+      // Function to fetch data from the server
+      function fetchData() {
+        fetch('/api/data/order')
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return response.json();
+          })
+          .then(data => {
+            // Store images and details from the fetched data
+            data.forEach(item => {
+              images.push(item.image_url, item.image_url2, item.image_url3, item.image_url4);
+              propertyId = item.propertyId;
+              category = item.category;
+              price = item.price;
+              fname = item.fname;
+              lname = item.lname;
+              userid = item.userId;
+              description = item.model; // Capture the description
+            });
+
+            // Set hidden input values
+            document.querySelector('input[name="id"]').value = propertyId; 
+            document.querySelector('input[name="cat"]').value = category;
+            document.querySelector('input[name="price"]').value = price;
+            document.querySelector('input[name="ofname"]').value = fname;
+            document.querySelector('input[name="olname"]').value = lname;
+            document.querySelector('input[name="uid"]').value = userid;
+
+            // Set the description, category, and price in the spans
+            document.getElementById('description').innerText = description;
+            document.getElementById('category').innerText = category; // Set category
+            document.getElementById('price').innerText = price; // Set price
+
+            // Display the first image
+            displayImage(currentIndex);
+
+            // Set up button click handlers
+            document.getElementById('next-button').addEventListener('click', () => {
+              currentIndex++;
+              if (currentIndex >= images.length) {
+                currentIndex = 0; // Loop back to the first image
+              }
+              displayImage(currentIndex);
+            });
+
+            document.getElementById('prev-button').addEventListener('click', () => {
+              currentIndex--;
+              if (currentIndex < 0) {
+                currentIndex = images.length - 1; // Loop back to the last image
+              }
+              displayImage(currentIndex);
+            });
+          })
+          .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+          });
+      }
+
+      function displayImage(index) {
+        const imageDisplay = document.getElementById('image-display');
+        imageDisplay.innerHTML = `
+          <div class="image-container">
+            <img src='../uploads/${images[index]}' alt='Property Image'>
+          </div>
+        `;
+
+        // Show/hide buttons based on the index
+        document.getElementById('prev-button').style.display = index > 0 ? 'inline' : 'none';
+        document.getElementById('next-button').style.display = index < images.length - 1 ? 'inline' : 'none';
+      }
+
+      // Call fetchData on page load
+      window.onload = fetchData;
+    </script>
+    <form method="post" action="/neg">
+     <div class="user-details">
+    <input type="hidden" name="uid" value=""><br>
+    <input type="submit" value="negotiation">
+    </form>
+  </div>
+    <form method="post" action="/pay">
+      <input type="hidden" name="id" value=""> 
+      <input type="hidden" name="cat" value="">
+      <input type="hidden" name="ofname" value="">
+      <input type="hidden" name="olname" value="">
+      <input type="hidden" name="price" value="">
+
+        <div class="user-details">
+            <div class="input-box">
+              Description: <span id="description"></span><br>
+              Phone: <span id="phone">0960337273</span><br>
+              Price you pay for <span id="category"></span> is = <span id="price"></span>, plus 2% commission 
+             </div>
+            <div class="input-box">
+              <span class="details">Email</span>
+              <input type="email" placeholder="enter your email" name="email" required>
+          </div>     
+        <div class="input-box">
+            <span class="details">Password</span>
+            <input type="password" name="pass" required
+            title="You must enter your password "
+            >
+        </div>
+        <input type="submit" value="Click to pay">
+      </div>
+      </form>
+        
+      </div>
+  <script src="js/scrollreveal.min.js"></script>
+  <script src="js/index.js"></script>
+</body>
+</html>

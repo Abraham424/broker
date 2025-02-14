@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="viewtbl.css">
+    <title>Soled Property</title>
+    <script src="js/html2pdf.bundle.min.js"></script>
+    <script>
+            function fetchData() {
+                fetch('/api/sold-properties')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        const container = document.getElementById('properties-table-body');
+                        container.innerHTML = ''; // Clear existing content
+            
+                        const totalsolled = data.length;
+                        document.getElementById('totalsolled').textContent = `Total soled properties: ${totalsolled}`;
+            
+                        let totalCommission = 0; // Initialize total commission
+            
+                        data.forEach((sold, index) => {
+                            const row = document.createElement('tr');
+                            row.innerHTML = `
+                                <td>${index + 1}</td>
+                                <td>${sold.solledId}</td>
+                                <td>${sold.seller}</td>
+                                <td>${sold.buyer}</td>
+                                <td>${sold.category}</td>
+                                <td>${sold.price}</td>
+                                <td>${sold.comission}</td>
+                                <td>${sold.date}</td>
+                            `;
+                            container.appendChild(row);
+            
+                            // Add to total commission
+                            totalCommission += parseFloat(sold.comission) || 0; // Ensure it's a number
+                        });
+            
+                        // Display total commission in a styled div
+                        const totalCommissionDisplay = document.createElement('div');
+                        totalCommissionDisplay.id = 'total-commission';
+                        totalCommissionDisplay.textContent = `Total Commission: ${totalCommission.toFixed(2)}`;
+                        totalCommissionDisplay.style.marginBottom = '20px';
+                        totalCommissionDisplay.style.fontSize = '1.2em';
+                        totalCommissionDisplay.style.fontWeight = 'bold';
+            
+                        // Append total commission display after the table
+                        const tableContainer = document.getElementById('solledTable');
+                        tableContainer.parentNode.insertBefore(totalCommissionDisplay, tableContainer.nextSibling);
+            
+                        // Print and download functionality
+                        document.getElementById('print-btn').addEventListener('click', function() {
+                            const element = document.getElementById('solledTable');
+                            const opt = {
+                                margin:       1,
+                                filename:     'solled.pdf',
+                                image:        { type: 'jpeg', quality: 0.98 },
+                                html2canvas:  { scale: 2 },
+                                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+                            };
+                            html2pdf().from(element).set(opt).save();
+                        });
+            
+                        document.getElementById('download-doc-btn').addEventListener('click', function() {
+                            const table = document.getElementById('solledTable');
+                            let docContent = '<html><head><meta charset="UTF-8"></head><body>';
+                            docContent += '<h1>List of All Sold Properties</h1>';
+                            docContent += table.outerHTML;
+                            docContent += '</body></html>';
+            
+                            const blob = new Blob([docContent], { type: 'application/msword' });
+                            const url = URL.createObjectURL(blob);
+                            const a = document.createElement('a');
+                            a.href = url;
+                            a.download = 'solled.doc';
+                            document.body.appendChild(a);
+                            a.click();
+                            document.body.removeChild(a);
+                            URL.revokeObjectURL(url);
+                        });
+                    })
+                    .catch(error => {
+                        console.error('There was a problem with the fetch operation:', error);
+                    });
+            }
+
+        window.onload = fetchData;
+    </script>
+</head>
+<body>
+    <h1>List of All Soled Properties</h1>
+    <table class="tbl" id="solledTable">
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>ID</th>
+                <th>Seller Name</th>
+                <th>Buyer Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Comission</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody id="properties-table-body">
+        </tbody>
+    </table>
+    <div id="totalsolled" style="margin-bottom: 20px; font-size: 1.2em; font-weight: bold;"></div>
+    <div id="total-commission" style="margin-bottom: 20px; font-size: 1.2em; font-weight: bold;"></div>
+    <div class="btn">
+        <button id="print-btn">Print to PDF</button>
+        <br>
+        <button id="download-doc-btn">Download as DOC</button>
+    </div>
+</body>
+</html>

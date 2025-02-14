@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="remixicon/remixicon.css">
+<link rel="stylesheet" type="text/css" href="admin.css">
+<link rel="stylesheet" type="text/css" href="broker.css">
+  <title>Admin Page</title>
+</head>
+<body>
+  <script>
+    async function fetchNotifications() {
+        try {
+            const response = await fetch('/api/signup');
+            if (!response.ok) throw new Error('Network response was not ok');
+            const data = await response.json();
+            document.getElementById('notification-count').textContent = data.count;
+        } catch (error) {
+            console.error('Error fetching notifications:', error);
+        }
+    }
+
+    function handleSearch(event) {
+        event.preventDefault(); // Prevent default form submission
+        const searchQuery = document.querySelector('.search-box').value;
+        console.log(`Searching for: ${searchQuery}`);
+        // Here you can implement your search logic, e.g., sending a request to an API
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        fetchNotifications(); // Fetch notifications count on page load
+        document.querySelector('.s-form').addEventListener('submit', handleSearch);
+    });
+</script>
+<nav class="nav-user">
+    <div class="nav-header">
+      <div class="nav-logo">
+         <a href="#">Gimba<span>Broker</span>.</a>
+      </div>
+    <div class="nav-menu" id="menu-btn">
+      <span><i class="ri-menu-line"></i></span>
+     </div>
+</div>
+<ul class="nav-links" id="nav-links">
+         <li class="dropdown"><a href="/user?role=user"><i class="ri-eye-line"></i> View Property </li>
+          <li class="dropdown"><a href="/upload"><i class="ri-add-circle-line"></i> Post Property</a></li>
+          <li class="dropdown"><a href="/acount"><i class="ri-settings-2-line"></i> Manage acount</a></li>
+          <li class="dropdown"><a href="/permission"><i class="ri-user-star-line permission-icon"></i> Permission</a></li> 
+          <li class="dropdown"><a href="/viewreport"><i class="ri-file-pdf-line"></i> View Report</li>
+          <li class="dropdown"><a href="/viewFeedback"><i class="ri-message-2-line"></i> View Feedback</a></li>
+          <li class="dropdown"><a href="/logout"><i class="ri-logout-box-line"> </i> Logout</a></li>
+          <div class="dropdown">
+            <a href="/acountnotification">
+             <button type="button" class="icon-button">
+              <i class="ri-notification-2-line"></i>
+                <span class="icon-button__badge" id="notification-count"></span>
+               </button>
+                  </a>
+          </div>        </ul>
+</nav>
+  <div class="footer">
+      <footer>
+          Copyright <i class="ri-copyright-line"></i> 
+          2024 Gimba Broker System. All right reserved.
+      </footer>
+  </div>
+
+  <script src="js/scrollreveal.min.js"></script>
+  <script src="js/index.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="remixicon/remixicon.css">
+  <link rel="stylesheet" type="text/css" href="broker.css">
+  <link rel="stylesheet" type="text/css" href="viewtbl.css">
+  <title>View Properties</title>
+</head>
+<body>
+  <nav class="nav-user">
+    <div class="nav-header">
+      <div class="nav-logo">
+        <a href="tblproperty">Gimba<span>Broker</span>.</a>
+      </div>
+      <div class="nav-menu" id="menu-btn">
+        <span><i class="ri-menu-line"></i></span>
+      </div>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li class="dropdown"><a href="/viewpropertyb"><i class="ri-eye-line"></i> View</a></li>
+      <li class="dropdown"><a href="/uploadb"><i class="ri-add-circle-line"></i> Add</a></li>
+      <li class="dropdown"><a href="/updateproperty"><i class="ri-edit-line"></i> Update</a></li>
+      <li class="dropdown"><a href="/deleteproperty"><i class="ri-delete-bin-line"></i> Delete</a></li>
+      <li class="dropdown"><a href="/logout"><i class="ri-logout-box-line"></i> Logout</a></li>
+    </ul>
+  </nav>
+
+  <h1>List of All Property</h1>
+  <table class="tbl" id="propertyTable">
+    <thead>
+      <tr>
+        <th>No.</th>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Price</th>
+        <th>Category</th>
+        <th>Discription</th>
+        <th>Account.no</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody id="propertyTableBody"></tbody>
+  </table>
+  <div id="totalProperties" style="margin-bottom: 20px; font-size: 1.2em; font-weight: bold;"></div>
+<div class="btn">
+  <button id="print-btn">Print to PDF</button>
+  <br>
+  <button id="download-doc-btn">Download as DOC</button>
+</div>
+  <script>
+    function fetchData() {
+        fetch('/api/data/viewproperty')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                const container = document.getElementById('propertyTableBody');
+                container.innerHTML = ''; // Clear existing content
+
+                // Update the total properties count
+                const totalProperties = data.length;
+                document.getElementById('totalProperties').textContent = `Total Properties: ${totalProperties}`;
+
+                data.forEach((property, index) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${index + 1}</td>
+                        <td>${property.propertyId}</td>
+                        <td>${property.fname}</td>
+                        <td>${property.lname}</td>
+                        <td>${property.price}</td>
+                        <td>${property.category}</td>
+                        <td>${property.model}</td>
+                        <td>${property.acount}</td>
+                        <td>${property.date}</td>
+                    `;
+                    container.appendChild(row);
+                });
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
+    }
+
+    window.onload = fetchData;
+
+    // Print to PDF functionality
+    document.getElementById('print-btn').addEventListener('click', function() {
+        const element = document.getElementById('propertyTable');
+        html2pdf()
+            .from(element)
+            .save('property.pdf');
+    });
+
+    // Download as DOC functionality
+    document.getElementById('download-doc-btn').addEventListener('click', function() {
+        const table = document.getElementById('propertyTable');
+        let docContent = '<html><head><meta charset="UTF-8"></head><body>';
+        docContent += '<h1>List of All Property</h1>';
+        docContent += table.outerHTML; // Get the HTML of the table
+        docContent += '</body></html>';
+
+        const blob = new Blob([docContent], { type: 'application/msword' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'property.doc';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    });
+
+  </script>
+  <script src="js/html2pdf.bundle.min.js"></script>
+</body>
+</html>

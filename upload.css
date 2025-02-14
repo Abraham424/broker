@@ -1,0 +1,235 @@
+/* Universal reset for margin, padding, and box-sizing */
+* {
+    margin: 0px; /* Remove default margin */
+    padding: 0px; /* Remove default padding */
+    box-sizing: border-box; /* Use border-box model for sizing */
+}
+
+/* Body styling */
+body {
+    background: white; /* Set background color to white */
+    display: flex; /* Use flexbox for layout */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    height: 100vh; /* Full height of the viewport */
+    padding: 10px; /* Padding around the body */
+    background-size: cover; /* Cover background */
+    background-position: center; /* Center background */
+}
+
+/* Form container styling */
+.form {
+    max-width: 90%; /* Maximum width for form */
+    width: 100%; /* Full width of the form */
+    background: transparent; /* Transparent background */
+    padding: 25px 30px; /* Padding inside the form */
+    border-radius: 15px; /* Rounded corners for form */
+    backdrop-filter: blur(1px); /* Blur effect for background */
+    border: 2px solid black; /* Black border for form */
+    box-shadow: 0 0 5px #b304f8; /* Shadow effect for form */
+    color: #fff; /* Text color for form */
+}
+
+/* Grid layout for form elements */
+.form .grid {
+    margin-top: 10px; /* Top margin for grid */
+    display: flex; /* Use flexbox for grid layout */
+    justify-content: space-around; /* Space around grid items */
+}
+
+/* Individual form element styling */
+.form .grid .form-element {
+    width: 18%; /* Width for each form element */
+    height: 18%; /* Height for each form element */
+    box-shadow: 0px 0px 20px 5px rgba(100, 100, 100, 0.1); /* Shadow effect for form elements */
+}
+
+/* Hide input fields within form elements */
+.form .grid .form-element input {
+    display: none; /* Hide input fields */
+    cursor: pointer; /* Pointer cursor for hidden inputs */
+}
+
+/* Image styling within form elements */
+.form .grid .form-element img {
+    width: 100%; /* Full width for images */
+    height: 300px; /* Fixed height for images */
+    border-radius: 10px; /* Rounded corners for images */
+    cursor: pointer; /* Pointer cursor for images */
+}
+
+/* Styling for the text below images in form elements */
+.form .grid .form-element div {
+    position: relative; /* Relative positioning for text */
+    height: 40px; /* Fixed height for text */
+    margin-top: 10px; /* Top margin for text */
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    text-align: center; /* Center align text */
+    line-height: 40px; /* Center text vertically */
+    font-size: 13px; /* Font size for text */
+    color: #f5f5f5; /* Text color */
+    font-weight: 600; /* Bold text */
+    border-radius: 10px; /* Rounded corners for text background */
+}
+
+/* Span styling within text elements */
+.form .grid .form-element div span {
+    font-size: 30px; /* Font size for span text */
+    cursor: pointer; /* Pointer cursor for span */
+}
+
+/* Hover effect for span text */
+.form .grid .form-element div span:hover {
+    font-size: 30px; /* Maintain font size on hover */
+    cursor: pointer; /* Pointer cursor on hover */
+    color: white; /* Change text color on hover */
+}
+
+/* User details section styling */
+.form form .user-details {
+    display: flex; /* Use flexbox for user details layout */
+    flex-wrap: wrap; /* Allow wrapping of items */
+    justify-content: space-between; /* Space between user detail items */
+    margin: 20px 0 12px 0; /* Margin for user details section */
+    color: black; /* Text color for user details */
+}
+
+/* Input box styling within user details */
+form .user-details .input-box {
+    margin-bottom: 15px; /* Bottom margin for input box */
+    width: calc(100% / 2 - 20px); /* Width of input box, accounting for margin */
+}
+
+/* Details label styling within user details */
+.user-details .input-box .details {
+    display: block; /* Block display for details label */
+    margin-bottom: 5px; /* Bottom margin for details label */
+    font-size: 30px; /* Font size for details label */
+}
+
+/* Input field styling within user details */
+.user-details .input-box input {
+    background: transparent; /* Transparent background for input */
+    color: black; /* Text color for input */
+    height: 45px; /* Fixed height for input */
+    width: 100%; /* Full width of the input */
+    outline: none; /* Remove outline */
+    border-radius: 5px; /* Rounded corners for input */
+    border: 2px solid black; /* Black border for input */
+    box-shadow: 0 0 10px black; /* Shadow effect for input */
+    padding-left: 15px; /* Left padding for input */
+    font-size: 24px; /* Font size for input text */
+    border-bottom-width: 2px; /* Bottom border width */
+    transition: all 0.3s ease; /* Smooth transition for input */
+}
+
+/* Focus and valid state styling for input */
+.user-details .input-box input:focus,
+.user-details .input-box input:valid {
+    box-shadow: 0 0 5px #b700ff; /* Shadow effect on focus/valid */
+}
+
+/* Placeholder styling for input */
+.input-box input::placeholder {
+    color: #b0b0b0; /* Color for placeholder text */
+}
+
+/* Gender title styling */
+form .input-box .gender-title {
+    font-size: 30px; /* Font size for gender title */
+    font-weight: 500; /* Font weight for gender title */
+}
+
+/* Category section styling */
+form .input-box .category {
+    display: flex; /* Use flexbox for category layout */
+    width: 70%; /* Width for category section */
+    margin: 14px 0; /* Vertical margin for category section */
+    justify-content: space-evenly; /* Space evenly between items */
+}
+
+/* Category label styling */
+.input-box .category label {
+    display: flex; /* Flex display for label */
+    align-items: center; /* Center align items vertically */
+}
+
+/* Gender label styling */
+.input-box .category .gender {
+    font-size: 25px; /* Font size for gender label */
+}
+
+/* Dot styling for radio buttons */
+.input-box .category .dot {
+    height: 25px; /* Height for dot */
+    width: 25px; /* Width for dot */
+    background: #d9d9d9; /* Background color for dot */
+    border-radius: 50%; /* Rounded shape for dot */
+    margin-right: 10px; /* Right margin for dot */
+    border: 5px solid transparent; /* Transparent border */
+    transition: all 0.3s ease; /* Smooth transition for dot */
+}
+
+/* Checked state styling for radio buttons */
+#dot-4:checked~.category label .four,
+#dot-5:checked~.category label .five {
+    border-color: #d9d9d9; /* Border color for checked state */
+    background: #9b59b6; /* Background color for checked state */
+}
+
+/* Hide radio button inputs */
+form input[type="radio"] {
+    display: none; /* Hide radio button inputs */
+}
+
+/* Button section styling */
+form .button {
+    height: 55px; /* Height for button section */
+    margin: 45px 0; /* Vertical margin for button section */
+    text-align: center; /* Center align button section */
+}
+
+/* Button input styling */
+form .button input {
+    height: 100%; /* Full height for button input */
+    width: 50%; /* Width for button input */
+    outline: none; /* Remove outline */
+    color: #fff; /* Text color for button input */
+    border: none; /* Remove border */
+    font-size: 25px; /* Font size for button input text */
+    font-weight: 500; /* Font weight for button input text */
+    letter-spacing: 1px; /* Letter spacing for button input text */
+    border-radius: 10px; /* Rounded corners for button input */
+    background: linear-gradient(135deg, #71b7e6, #9b59b6); /* Gradient background for button input */
+}
+
+/* Hover effect for button input */
+form .button input:hover {
+    background: linear-gradient(-135deg, #71b7e6, #9b59b6); /* Change gradient on hover */
+    color: #b309f7; /* Change text color on hover */
+}
+
+/* Media query for responsive design */
+@media(max-width:584px) {
+    .form {
+        max-width: 100%; /* Max width for form on small screens */
+    }
+
+    form .user-details .input-box {
+        margin-bottom: 15px; /* Bottom margin for input box on small screens */
+        width: 100%; /* Full width for input box on small screens */
+    }
+
+    form .gender-details .category {
+        width: 100%; /* Full width for category on small screens */
+    }
+
+    .form form .user-details {
+        max-height: 300px; /* Max height for user details on small screens */
+        overflow-y: scroll; /* Enable vertical scroll if content overflows */
+    }
+
+    .user-details::-webkit-scrollbar {
+        width: 0; /* Hide scrollbar */
+    }
+}

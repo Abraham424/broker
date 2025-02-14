@@ -1,0 +1,220 @@
+/* Importing Google Fonts for Poppins with various font weights */
+@import url("https://fonts.googlrapis.com/css2?famili=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+/* Universal reset for margin, padding, and box-sizing */
+* {
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    box-sizing: border-box; /* Use border-box model for sizing */
+    font-family: "Poppins", sans-serif; /* Set default font family */
+}
+
+/* Body styling for centering content */
+body {
+   /* background: linear-gradient(135deg, #71b7e6, #9b59b6); */ /* Optional gradient background */
+    display: flex; /* Use flexbox for layout */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    min-height: 100vh; /* Minimum height of viewport */
+    background-size: cover; /* Cover background */
+    background-position: center; /* Center background */
+}
+
+/* Login form styling */
+.login {
+    width: 90%; /* Width of the login form */
+    background: transparent; /* Transparent background */
+    border: 2px solid black; /* Black border */
+    box-shadow: 0 0 10px #b304f8; /* Shadow effect */
+    color: #fff; /* White text color */
+    border-radius: 15px; /* Rounded corners */
+    padding: 30px 40px; /* Padding inside the form */
+}
+
+/* Title styling within login form */
+.login h1 {
+    font-size: 35px; /* Font size for title */
+    text-align: center; /* Center align title */
+    color: #b304f8; /* Color for title */
+}
+
+/* Input box styling */
+.login .input-box {
+    position: relative; /* Relative positioning for input box */
+    width: 100%; /* Full width */
+    height: 50px; /* Fixed height */
+    margin: 30px 0; /* Vertical margin */
+}
+
+/* Input field styling */
+.input-box input {
+    width: 100%; /* Full width for input */
+    height: 100%; /* Full height for input */
+    background: transparent; /* Transparent background */
+    outline: none; /* Remove outline */
+    border: 2px solid black; /* Black border */
+    border-radius: 20px; /* Rounded corners */
+    font-size: 25px; /* Font size for input */
+    color: black; /* Black text color */
+    padding: 20px 45px 20px 20px; /* Padding inside input */
+}
+
+/* Icon styling within input box */
+.input-box i {
+    color: #b304f8; /* Color for icon */
+}
+
+/* Focus and valid state styling for input */
+.input-box input:focus,
+.input-box input:valid {
+    box-shadow: 0 0 10px #b304f8; /* Shadow effect on focus/valid */
+}
+
+/* Placeholder styling for input */
+.input-box input::placeholder {
+    color: #b0b0b0; /* Color for placeholder text */
+}
+
+/* Icon positioning within login form */
+.login i {
+    position: absolute; /* Absolute positioning for icon */
+    right: 20px; /* Position from right */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Center vertically */
+    font-size: 20px; /* Font size for icon */
+}
+
+/* Remember me section styling */
+.login .rem {
+    display: flex; /* Flexbox layout for remember me section */
+    justify-content: space-between; /* Space between items */
+    font-size: 25px; /* Font size for remember me text */
+    margin: -15px 0 15px; /* Vertical margin */
+}
+
+/* Checkbox styling within remember me section */
+.rem label input {
+    accent-color: #fff; /* Custom color for checkbox */
+    margin-right: 3px; /* Right margin for checkbox */
+    height: 20px; /* Height for checkbox */
+    width: 20px; /* Width for checkbox */
+}
+
+/* Link styling within remember me section */
+.rem a {
+    color: black; /* Black color for links */
+    text-decoration: none; /* Remove underline from links */
+}
+
+/* Hover effect for links in remember me section */
+.rem a:hover {
+    text-decoration: underline; /* Underline on hover */
+    color: #b304f8; /* Change color on hover */
+}
+
+/* Button styling within login form */
+.login .btn {
+    height: 55px; /* Height for button */
+    margin: 4px 0; /* Vertical margin for button */
+    text-align: center; /* Center align text in button */
+}
+
+/* Main button styling */
+.login .btn {
+    margin-left: 25%; /* Left margin for button */
+    width: 50%; /* Width for button */
+    height: 50px; /* Height for button */
+    background: linear-gradient(135deg, #71b7e6, #9b59b6); /* Gradient background */
+    border: none; /* Remove border */
+    outline: none; /* Remove outline */
+    border-radius: 40px; /* Rounded corners for button */
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1); /* Shadow effect */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 26px; /* Font size for button */
+    color: black; /* Black text color for button */
+    font-weight: 600; /* Font weight for button */
+}
+
+/* Hover effect for button */
+.login .btn:hover {
+    background: linear-gradient(-135deg, #71b7e6, #9b59b6); /* Change gradient on hover */
+    color: #b304f8; /* Change text color on hover */
+}
+
+/* Link styling within remember me section */
+.rem a {
+    color: black; /* Black color for links */
+    text-decoration: none; /* Remove underline from links */
+    font-weight: 600; /* Bold text for links */
+}
+
+/* Registration text styling */
+.reg p {
+    color: black; /* Black color for registration text */
+    font-size: 20px; /* Font size for registration text */
+    margin-top: 10px; /* Top margin for registration text */
+}
+
+/* Link styling within registration text */
+.reg p a {
+    color: black; /* Black color for links */
+    text-decoration: none; /* Remove underline from links */
+    font-weight: 600; /* Bold text for links */
+}
+
+/* Hover effect for links in registration text */
+.reg p a:hover {
+    text-decoration: underline; /* Underline on hover */
+    color: #b304f8; /* Change color on hover */
+}
+
+/* Form group styling */
+.form-group {
+    margin-bottom: 20px; /* Space below each form group */
+    position: relative; /* Allows for absolute positioning of elements */
+}
+
+/* Label styling within form group */
+.form-group label {
+    font-weight: bold; /* Make the label bold */
+    margin-bottom: 8px; /* Space between label and select */
+    display: block; /* Ensure label is on a new line */
+    color: #b10bf3; /* Darker color for better readability */
+    font-size: 25px; /* Font size for label */
+}
+
+/* Dropdown styling */
+.form-control {
+    margin-left: 10%; /* Left margin for dropdown */
+    color: black; /* Black text color for dropdown */
+    width: 50%; /* Width for dropdown */
+    border-radius: 4px; /* Rounded corners */
+    padding: 10px; /* Padding inside the dropdown */
+    font-size: 19px; /* Increase font size */
+    transition: border-color 0.2s, box-shadow 0.2s; /* Smooth transition */
+}
+
+/* Focus state styling for dropdown */
+.form-control:focus {
+    border-color: #b10bf3; /* Change border color on focus */
+    box-shadow: 0 0 0 0.2rem #b10bf3; /* Add shadow on focus */
+}
+
+/* Dropdown option styling */
+.form-control option {
+    width: 50%; /* Width for dropdown options */
+    padding: 10px; /* Padding for dropdown options */
+}
+
+/* Media query for responsive design */
+@media (width > 768px) {
+    .login {
+        width: 40%; /* Width for login form on larger screens */
+        background: transparent; /* Transparent background */
+        border: 2px solid black; /* Black border */
+        box-shadow: 0 0 10px #b304f8; /* Shadow effect */
+        color: #fff; /* White text color */
+        border-radius: 15px; /* Rounded corners */
+        padding: 30px 40px; /* Padding inside the form */
+    }
+}

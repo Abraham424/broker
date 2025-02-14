@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="viewtbl.css">
+  <title>View Accounts</title>
+ <script>
+    // Function to fetch data from the server
+    function fetchData() {
+        fetch('/api/data/viewacount')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                const container = document.getElementById('acountTableBody');
+                container.innerHTML = ''; // Clear existing content
+
+                // Update the total accounts count
+                const totalusers = data.length;
+                document.getElementById('totalusers').textContent = `Total users: ${totalusers}`;
+
+                data.forEach((acount, index) => {
+                    const row = document.createElement('tr'); // Create a <tr> element
+                    row.innerHTML = `
+                        <td>${index + 1}</td>
+                        <td>${acount.userId}</td>
+                        <td>${acount.fname}</td>
+                        <td>${acount.lname}</td>
+                        <td>${acount.gender}</td>
+                        <td>${acount.phone}</td>
+                        <td>${acount.address}</td>
+                        <td>${acount.email}</td>
+                        <td>${acount.acount}</td>
+                        <td>${acount.role}</td>
+                    `;
+                    container.appendChild(row); // Append the row to the tbody
+                });
+
+                // Add event listeners for buttons after the table is populated
+                document.getElementById('print-btn').addEventListener('click', function() {
+                    const element = document.querySelector('.tbl'); // Target the table for PDF
+                    html2pdf()
+                        .from(element)
+                        .save('accounts.pdf');
+                });
+
+                document.getElementById('download-doc-btn').addEventListener('click', function() {
+                    const table = document.querySelector('.tbl');
+                    let docContent = '<html><head><meta charset="UTF-8"></head><body>';
+                    docContent += '<h1>List of All Accounts</h1>';
+                    docContent += table.outerHTML; // Get the HTML of the table
+                    docContent += '</body></html>';
+
+                    const blob = new Blob([docContent], { type: 'application/msword' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'accounts.doc';
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                });
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
+    }
+
+    // Call fetchData on page load
+    window.onload = fetchData;
+  </script>
+</head>
+<body>
+  <h1>List of All Accounts</h1>
+  <table class="tbl">
+    <thead>
+      <tr>
+        <th>No.</th>
+        <th>User ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Gender</th>
+        <th>Phone</th>
+        <th>Address</th>
+        <th>Email</th>
+        <th>Account No.</th>
+        <th>Role</th>
+      </tr>
+    </thead>
+    <tbody id="acountTableBody"></tbody>
+  </table>
+  <div id="totalusers" style="margin-bottom: 20px; font-size: 1.2em; font-weight: bold;"></div>
+
+  <div class="btn">
+    <button id="print-btn">Print to PDF</button>
+    <br>
+    <button id="download-doc-btn">Download as DOC</button>
+  </div>
+  <script src="js/html2pdf.bundle.min.js"></script>
+</body>
+</html>
